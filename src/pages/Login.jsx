@@ -38,6 +38,7 @@ const Login = () => {
       />
       <TextField
         label="パスワード"
+        type="password"
         variant="filled"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
