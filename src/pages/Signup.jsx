@@ -28,9 +28,11 @@ const Signup = () => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
+      // then 通信が成功したときにコールバック関数が実行
       .then((response) => {
         console.log("ユーザー登録成功！", response);
       })
+      // catch 通信が失敗したときにコールバック関数が実行
       .catch((error) => {
         console.error("ユーザー登録失敗...", error);
       });
