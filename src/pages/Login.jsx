@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField } from "@material-ui/core";
+import { AuthContext } from "../context/AuthService";
 
 import { auth } from "../config/firebase";
 
@@ -24,6 +25,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const classes = useStyles();
   const history = useHistory();
+  const user = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +38,10 @@ const Login = () => {
         console.error("ログイン失敗...", error);
       });
   };
+
+  if (user) {
+    return <Redirect to="/" />;
+  }
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
       <h1 className={classes.title}>Login Page</h1>
@@ -55,7 +61,7 @@ const Login = () => {
       <Button type="submit" variant="contained" color="secondary">
         ログイン
       </Button>
-      <Link to="/signup">アカウントをお持ちでない方</Link>
+      <Link to="/Signup">アカウントをお持ちでない方</Link>
     </form>
   );
 };
