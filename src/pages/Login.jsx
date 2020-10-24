@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField } from "@material-ui/core";
+
+import { auth } from "../config/firebase";
 
 const useStyles = makeStyles({
   title: {
@@ -21,11 +23,18 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const classes = useStyles();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        history.push("/");
+      })
+      .catch((error) => {
+        console.error("ログイン失敗...", error);
+      });
   };
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
@@ -37,8 +46,8 @@ const Login = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <TextField
-        label="パスワード"
         type="password"
+        label="パスワード"
         variant="filled"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
