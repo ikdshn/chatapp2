@@ -53,8 +53,8 @@ const Signup = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <TextField
-        label="パスワード"
         type="Password"
+        label="パスワード"
         variant="filled"
         value={password}
         onChange={(e) => setPassword(e.target.value)}

@@ -8,7 +8,12 @@ import Signup from "./pages/Signup";
 import Room from "./pages/Room";
 
 // routing (react-router-dom)
-// URLのエンドイポイント(/xxx)によって表示ページを変える
+// URLのエンドポイント(/xxxx)によって表示するページを変える
+//npm i react-router-dom
+
+// http://loaclhost:3000         の時Room
+// http://loaclhost:3000/login   の時Login
+// http://loaclhost:3000/signup  の時Signup
 
 const App = () => {
   return (

@@ -42,6 +42,7 @@ const Login = () => {
   if (user) {
     return <Redirect to="/" />;
   }
+
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
       <h1 className={classes.title}>Login Page</h1>
@@ -61,7 +62,7 @@ const Login = () => {
       <Button type="submit" variant="contained" color="secondary">
         ログイン
       </Button>
-      <Link to="/Signup">アカウントをお持ちでない方</Link>
+      <Link to="/signup">アカウントをお持ちでない方</Link>
     </form>
   );
 };
