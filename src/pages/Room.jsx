@@ -4,13 +4,13 @@ import { AuthContext } from "../context/AuthService";
 
 const Room = () => {
   const user = useContext(AuthContext);
-  const signOut = () => {
+  const signout = () => {
     auth.signOut();
   };
   return (
     <>
       <h1>Room</h1>
-      <button onClick={signOut}>ログアウト</button>
+      <button onClick={signout}>ログアウト</button>
     </>
   );
 };
