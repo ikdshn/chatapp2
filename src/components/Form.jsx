@@ -9,7 +9,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text.length === 0) {
+    if (text.trim().length === 0) {
       alert("文字を入力してください");
       return;
     }
@@ -34,7 +34,12 @@ const Form = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <Button type="submit" variant="contained" color="secondary">
+        <Button
+          disabled={!text.length}
+          type="submit"
+          variant="contained"
+          color="secondary"
+        >
           送信
         </Button>
       </form>
